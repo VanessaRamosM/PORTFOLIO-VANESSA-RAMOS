@@ -1,0 +1,555 @@
+/* ===== BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: black;
+  color: white;
+  font-family: "Petrona", serif;
+  font-weight: 800;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== ESTRUCTURA: DOS COLUMNAS ===== */
+.page {
+  display: grid;
+  grid-template-columns: 61% 39%;
+  height: 100vh;
+}
+
+/* ===== COLUMNA IZQUIERDA ===== */
+.left {
+  display: grid;
+  grid-template-rows: 76fr 24fr; /* foto arriba, texto abajo */
+  min-height: 0;
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  container-type: size;
+}
+
+.hero__img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top; /* alinea la foto arriba y recorta por abajo */
+}
+
+/* Nombre arriba a la izquierda */
+.hero__name {
+  position: absolute;
+  top: 22px;
+  left: 24px;
+  font-size: 20px;
+  letter-spacing: -0.16em;
+}
+
+/* Teléfono, correo y redes abajo a la derecha */
+.hero__contact {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: -0.16em;
+}
+
+.social {
+  display: flex;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.social svg {
+  width: 22px;
+  height: 22px;
+  fill: white;
+  display: block;
+}
+
+/* Bloque blanco de texto */
+.about {
+  background: white;
+  color: #8d8590;
+  padding: 18px 22px;
+  overflow-y: auto;
+}
+
+.about p {
+  font-size: 20px;
+  letter-spacing: -0.06em;
+}
+
+/* ===== COLUMNA DERECHA: VÍDEOS ===== */
+.right {
+  overflow-y: auto;
+  scrollbar-width: none; /* oculta la barra de scroll */
+  min-height: 0;
+}
+
+.project {
+  position: relative;
+  height: 76vh; /* misma altura que la foto principal */
+}
+
+.project__video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Nombre del proyecto centrado sobre el vídeo */
+.project__title {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 36px;
+  letter-spacing: -0.16em;
+}
+
+/* ===== MÓVIL ===== */
+@media (max-width: 800px) {
+  .page {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .left {
+    height: 100vh;
+  }
+
+  .right {
+    overflow: visible;
+  }
+
+  .project {
+    height: 70vh;
+  }
+}
+/* ===== TEXTO BORROSO Y SEMITRANSPARENTE ===== */
+
+.hero__contact > a,
+.project__title {
+  filter: blur(0.5px);
+  opacity: 0.7;
+}
+.social {
+  opacity: 0.7;
+}
+.hero__name {
+  filter: blur(0.5px);
+  opacity: 0.9;
+}
+/* ===== PÁGINA DE PROYECTO (simi.html) ===== */
+.project--link {
+  cursor: pointer;
+}
+
+/* La página mantiene las proporciones del diseño de Figma (398 x 843) */
+.pagina {
+  position: relative;
+  aspect-ratio: 398 / 843;
+  background: white;
+  color: black;
+}
+
+/* Todos los elementos se colocan con porcentajes sobre la página */
+.pagina > * {
+  position: absolute;
+}
+
+.cabecera {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 26.3%;
+  color: white;
+}
+
+.cabecera .project__title {
+  pointer-events: none;
+}
+
+.texto {
+  font-size: 1.5vw;
+  letter-spacing: -0.06em;
+}
+
+.texto--intro {
+  top: 27.6%;
+  left: 11.6%;
+  width: 73%;
+}
+
+.pagina__titulo {
+  top: 31.1%;
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  text-align: center;
+  font-size: 36px;
+  font-weight: 800;
+  letter-spacing: -0.16em;
+}
+
+.fotos {
+  top: 33.2%;
+  left: 2.8%;
+  width: 94.4%;
+}
+
+.texto--izquierda {
+  top: 46.4%;
+  left: 11.6%;
+  width: 58.5%;
+}
+
+.texto--derecha {
+  top: 62.2%;
+  left: 24.4%;
+  width: 58.5%;
+  text-align: right;
+}
+
+.pie__contacto {
+  bottom: 2.4%;
+  left: 2%;
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+  font-size: 16px;
+  letter-spacing: -0.16em;
+}
+
+.pie__redes {
+  bottom: 2.2%;
+  right: 3.5%;
+  margin-top: 0;
+}
+
+.pagina .social svg {
+  fill: black;
+}
+
+/* ===== Ajustes de delusion.html ===== */
+.pagina--delusion .texto--derecha {
+  top: 63%;
+  left: 27.1%;
+}
+
+.pagina--delusion .pie__contacto {
+  bottom: 1.8%;
+}
+
+.pagina--delusion .pie__redes {
+  bottom: 1.5%;
+}
+/* ===== irene.html ===== */
+.pagina--irene {
+  aspect-ratio: 398 / 1027;
+}
+
+.pagina--irene .cabecera {
+  height: 21.6%;
+}
+
+.pagina--irene .texto--intro {
+  top: 22.7%;
+}
+
+.pagina--irene .pagina__titulo {
+  top: 25.5%;
+}
+
+/* Cuadrícula de fotos: 3 columnas */
+.galeria {
+  top: 27.1%;
+  left: 2%;
+  width: 95.5%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1%;
+  row-gap: 0.5vw;
+}
+
+.galeria img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+}
+
+/* La séptima foto va sola, en la columna del centro */
+.galeria img:nth-child(7) {
+  grid-column: 2;
+}
+
+.texto--lateral-izq {
+  top: 48.8%;
+  left: 3.8%;
+  width: 25.4%;
+}
+
+.texto--lateral-der {
+  top: 48.8%;
+  left: 70.6%;
+  width: 25.4%;
+  text-align: right;
+}
+
+.texto--centro {
+  top: 66.5%;
+  left: 32.2%;
+  width: 35.2%;
+  text-align: center;
+}
+
+.pagina--irene .pie__contacto {
+  bottom: 0.8%;
+}
+
+.pagina--irene .pie__redes {
+  bottom: 0.7%;
+  right: 4%;
+}
+
+/* El vídeo de Irene trae bordes negros: se amplía para taparlos */
+.pagina--irene .cabecera {
+  overflow: hidden;
+}
+
+.pagina--irene .project__video {
+  transform: scale(1.25);
+}
+
+/* ===== sound.html ===== */
+.pagina--sound {
+  aspect-ratio: 398 / 1027;
+}
+
+.pagina--sound .cabecera {
+  height: 21.6%;
+}
+
+.pagina--sound .texto--intro {
+  top: 22.7%;
+}
+
+.pagina--sound .pagina__titulo {
+  top: 25.5%;
+}
+
+/* La quinta foto va en la tercera columna (el hueco del centro es para el texto) */
+.pagina--sound .galeria img:nth-child(5) {
+  grid-column: 3;
+}
+
+.texto--medio {
+  top: 39.7%;
+  left: 40%;
+  width: 21%;
+  text-align: center;
+}
+
+.pagina--sound .texto--izquierda {
+  top: 55.7%;
+  left: 12%;
+  width: 36%;
+}
+
+.pagina--sound .texto--derecha {
+  top: 65%;
+  left: 52.3%;
+  width: 35.4%;
+}
+
+.pagina--sound .pie__contacto {
+  bottom: 1%;
+}
+
+.pagina--sound .pie__redes {
+  bottom: 0.9%;
+  right: 4%;
+}
+
+/* El vídeo de Sound trae bordes negros: se amplía para taparlos */
+.pagina--sound .cabecera {
+  overflow: hidden;
+}
+
+.pagina--sound .project__video {
+  transform: scale(1.25);
+}
+/* ===== normal.html ===== */
+.pagina--normal {
+  aspect-ratio: 398 / 823;
+}
+
+.pagina--normal .cabecera {
+  height: 27%;
+}
+
+.pagina--normal .texto--intro {
+  top: 28.3%;
+}
+
+.pagina--normal .pagina__titulo {
+  top: 31.8%;
+}
+
+.pagina--normal .fotos {
+  top: 34%;
+  left: 3.8%;
+  width: 92.2%;
+}
+
+.pagina--normal .texto--izquierda {
+  top: 45.2%;
+  left: 12.3%;
+}
+
+.pagina--normal .texto--derecha {
+  top: 62.3%;
+  left: 29.9%;
+  width: 56.5%;
+}
+
+.pagina--normal .pie__contacto {
+  bottom: 1.7%;
+}
+
+.pagina--normal .pie__redes {
+  bottom: 1.6%;
+  right: 3.8%;
+}
+
+/* Títulos en mayúscula */
+.project__title,
+.pagina__titulo,
+.hero__name,
+.hero__projects {
+  text-transform: uppercase;
+}
+/* ===== BOTÓN "SIGUIENTE PROYECTO" ===== */
+.siguiente {
+  left: 50%;
+  bottom: 29.5vw;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2vw;
+}
+
+.siguiente__caja {
+  position: relative;
+  width: 7.3vw;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.siguiente__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+.siguiente__video.activo {
+  opacity: 1;
+}
+
+.siguiente__texto {
+  font-size: 24px;
+  letter-spacing: -0.16em;
+  color: #8d8590;
+  white-space: nowrap;
+}
+
+/* ===== MAS TRANSICIONES ===== */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.6s;
+}
+
+/* ===== IMÁGENES QUE APARECEN AL HACER SCROLL ===== */
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    filter: blur(12px);
+    transform: translateY(150px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fotos,
+  .galeria img {
+    animation: aparecer linear both;
+    animation-timeline: view();
+    animation-range: entry 0% entry 70%;
+  }
+}
+
+/* ===== VÍDEO DE CABECERA: SE DIFUMINA Y SUBE AL HACER SCROLL ===== */
+@keyframes desaparecer {
+  from {
+    opacity: 1;
+    filter: blur(0);
+    translate: 0 0;
+    scale: 1;
+  }
+  to {
+    opacity: 0;
+    filter: blur(12px);
+    translate: 0 -150px;
+    scale: 1.08;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .cabecera {
+      overflow: hidden;
+    }
+
+    .cabecera .project__video {
+      animation: desaparecer linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+  }
+}
+
+/* Recorta sin crear zona de scroll, para que la animación del scroll funcione */
+.pagina .cabecera {
+  overflow: clip;
+}
