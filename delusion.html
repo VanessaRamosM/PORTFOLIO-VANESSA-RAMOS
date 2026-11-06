@@ -14,13 +14,12 @@
     <main class="pagina pagina--delusion">
       <!-- CABECERA: el vídeo de Delusion -->
       <header class="cabecera">
-        <video
-          class="project__video"
-          src="MEDIA/SOUNDSCAPE.mov"
-          autoplay
-          loop
-          playsinline
-        ></video>
+        <iframe
+          class="project__video yt"
+          src="https://www.youtube.com/embed/C-TypY9lSqY?autoplay=1&mute=1&loop=1&playlist=C-TypY9lSqY&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1"
+          allow="autoplay"
+          title="Delusion"
+        ></iframe>
         <h1 class="project__title">Delusion</h1>
         <a class="hero__name" href="index.html">Vanessa Ramos</a>
         <a class="hero__projects" href="index.html">Proyectos</a>
@@ -103,20 +102,23 @@
       </div>
     </main>
     <script>
-      // Audio de la cabecera: si Chrome lo bloquea, se activa con el primer clic
-      const videoCabecera = document.querySelector(".cabecera video");
+      // Audio de la cabecera: se activa con el primer clic en la página
+      const cabecera = document.querySelector(".cabecera iframe");
 
-      videoCabecera.play().catch(() => {
-        videoCabecera.muted = true;
-        videoCabecera.play();
-        document.addEventListener(
-          "click",
-          () => {
-            videoCabecera.muted = false;
-          },
-          { once: true },
-        );
-      });
+      document.addEventListener(
+        "click",
+        () => {
+          cabecera.contentWindow.postMessage(
+            '{"event":"command","func":"unMute","args":""}',
+            "*",
+          );
+          cabecera.contentWindow.postMessage(
+            '{"event":"command","func":"playVideo","args":""}',
+            "*",
+          );
+        },
+        { once: true },
+      );
     </script>
     <script src="siguiente.js"></script>
   </body>

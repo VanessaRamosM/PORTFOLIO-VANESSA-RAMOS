@@ -14,13 +14,12 @@
     <main class="pagina pagina--normal">
       <!-- CABECERA: el vídeo de ANORMAL PEOPLE REMAKE -->
       <header class="cabecera">
-        <video
-          class="project__video"
-          src="MEDIA/NORMAL GENT.mov"
-          autoplay
-          loop
-          playsinline
-        ></video>
+        <iframe
+          class="project__video yt"
+          src="https://www.youtube.com/embed/yI6a0_YDJGU?autoplay=1&mute=1&loop=1&playlist=yI6a0_YDJGU&controls=0&modestbranding=1&playsinline=1&rel=0&enablejsapi=1"
+          allow="autoplay"
+          title="Normal People Remake"
+        ></iframe>
         <h1 class="project__title">NORMAL PEOPLE REMAKE</h1>
         <a class="hero__name" href="index.html">Vanessa Ramos</a>
       </header>
@@ -102,20 +101,23 @@
       </div>
     </main>
     <script>
-      // Audio de la cabecera: si Chrome lo bloquea, se activa con el primer clic
-      const videoCabecera = document.querySelector(".cabecera video");
+      // Audio de la cabecera: se activa con el primer clic en la página
+      const cabecera = document.querySelector(".cabecera iframe");
 
-      videoCabecera.play().catch(() => {
-        videoCabecera.muted = true;
-        videoCabecera.play();
-        document.addEventListener(
-          "click",
-          () => {
-            videoCabecera.muted = false;
-          },
-          { once: true },
-        );
-      });
+      document.addEventListener(
+        "click",
+        () => {
+          cabecera.contentWindow.postMessage(
+            '{"event":"command","func":"unMute","args":""}',
+            "*",
+          );
+          cabecera.contentWindow.postMessage(
+            '{"event":"command","func":"playVideo","args":""}',
+            "*",
+          );
+        },
+        { once: true },
+      );
     </script>
     <script src="siguiente.js"></script>
   </body>

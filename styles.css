@@ -553,3 +553,43 @@ a {
 .pagina .cabecera {
   overflow: clip;
 }
+
+/* ===== VÍDEOS DE YOUTUBE ===== */
+.cabecera,
+.project,
+.siguiente__caja {
+  container-type: size;
+}
+
+.yt {
+  --ancho: max(100cqw, 100cqh * 16 / 9);
+  --alto: max(100cqh, 100cqw * 9 / 16);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--ancho);
+  height: var(--alto);
+  margin: calc(var(--alto) / -2) 0 0 calc(var(--ancho) / -2);
+  border: 0;
+  pointer-events: none;
+}
+
+/* ===== VÍDEOS DE YOUTUBE ===== */
+.cabecera,
+.project,
+.siguiente__caja {
+  container-type: size;
+}
+
+.yt {
+  --ancho: max(100cqw, 100cqh * 16 / 9);
+  --alto: max(100cqh, 100cqw * 9 / 16);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--ancho);
+  height: var(--alto);
+  margin: calc(var(--alto) / -2) 0 0 calc(var(--ancho) / -2);
+  border: 0;
+  pointer-events: none;
+}
